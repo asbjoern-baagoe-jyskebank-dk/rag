@@ -34,6 +34,7 @@ datadocs = [
      "A single strand of spider silk is five times stronger than a strand of steel of the same thickness.",
      "The longest tennis match in history took place at Wimbledon in 2010 between John Isner and Nicolas Mahut, lasting 11 hours and 5 minutes over three days.",
      "There is a giant cloud of alcohol in Sagittarius B, a gas cloud in the Milky Way, containing enough ethyl alcohol to make 400 trillion trillion pints of beer.",
+     "Gluten is a protein found in wheat, rye and barley. It can be difficult to handle for the human digestive system."
 ]
 
 # add some metadata about the categories of the documents
@@ -50,6 +51,7 @@ categories = [
      "nature",
      "sports",
      "space",
+     "food"
 ]
 
 vdb_collection.add(
@@ -67,7 +69,7 @@ while True:
         continue
     query_results = vdb_collection.query(
         query_texts=[query],
-        n_results=1,
+        n_results=3,
     )
     
     print(query_results["documents"])

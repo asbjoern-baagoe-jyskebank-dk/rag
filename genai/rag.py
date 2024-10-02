@@ -26,16 +26,21 @@ embeddings = FastEmbedEmbeddings()
 # embed the chunks as vectors and load them into the database
 db_chroma = Chroma.from_documents(chunks, embeddings, persist_directory=CHROMA_DATA_PATH)
 
+# PROMPT_TEMPLATE = """
+# Answer the question based only on the following context:
+# {context}
+# Answer the question based on the above context: {question}.
+# Provide a detailed answer.
+# Don’t justify your answers.
+# Don’t give information not mentioned in the CONTEXT INFORMATION.
+# Do not say "according to the context" or "mentioned in the context" or similar.
+# """
 PROMPT_TEMPLATE = """
-Answer the question based only on the following context:
-{context}
-Answer the question based on the above context: {question}.
+Answer the question: {question} using whatever resources you have.
+Include any related information from {context} as part of your answer.
 Provide a detailed answer.
 Don’t justify your answers.
-Don’t give information not mentioned in the CONTEXT INFORMATION.
-Do not say "according to the context" or "mentioned in the context" or similar.
 """
-
 
 while True:
     query = input("\nQuery: ")
